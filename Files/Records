@@ -1,0 +1,36 @@
+clear
+tput cup 3 12; echo "Student Program Information"
+tput cup 4 11; echo "=============================="
+tput cup 6 11; echo "Sort by: "
+tput cup 7 16; echo "L   - Last Name"
+tput cup 8 16; echo "P   - Program"
+tput cup 9 16; echo "C   - Credits"
+tput cup 10 16; echo "Any - ID"
+tput cup 12 11; echo "Enter your choice: "
+tput cup 12 30;
+read choice || continue
+clear
+tput cup 3 12; echo "Student Program Information"
+tput cup 4 11; echo "=============================="
+tput cup 7 0; echo "Student_ID"
+tput cup 7 15; echo "Last_Name"
+tput cup 7 30; echo "First_Name"
+tput cup 7 50; echo "Program"
+tput cup 7 70; echo "Credits"
+echo
+source ./functions
+case $choice in
+[Ll]) sort_lname | awk -F: '{printf "%s\t %-17s\t %-10s\t %-20s\t %-2s\n", $1, $2, $3, $4, $5}' ;;
+[Pp]) sort_program | awk -F: '{printf "%s\t %-17s\t %-10s\t %-20s\t %-2s\n", $1, $2, $3, $4, $5}' ;;
+[Cc]) sort_credits | awk -F: '{printf "%s\t %-17s\t %-10s\t %-20s\t %-2s\n", $1, $2, $3, $4, $5}' ;;
+*) sort_ID | awk -F: '{printf "%s\t %-17s\t %-10s\t %-20s\t %-2s\n", $1, $2, $3, $4, $5}' ;;
+esac
+echo
+echo
+echo
+echo
+echo "The total number of records:" `wc -l < student_data`
+echo
+echo
+echo "Press Enter to continue..."
+read continue
