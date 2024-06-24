@@ -1,0 +1,36 @@
+Creditsfile=~/final_project/student_data
+looptest=s
+while [ $looptest = s ]
+do
+clear
+tput cup 3 16; echo "Add New Student Record"
+tput cup 4 11; echo "================================"
+tput cup 6 11; echo "Student ID	: "
+tput cup 7 11; echo "Last Name 	: "
+tput cup 8 11; echo "First Name	: "
+tput cup 9 11; echo "Program	: "
+tput cup 10 11; echo "Credits	: "
+tput cup 12 11; echo "Add Another? (y)es or (q)uit: "
+tput cup 6 30; read id
+if grep -q $id student_data;
+then
+tput cup 20 0; echo "This ID is already in the file."
+tput cup 22 0; echo "Press ENTER to continue..."
+read continue
+else
+tput cup 7 30; read ln 
+tput cup 8 30; read fname
+tput cup 9 30; read Prog
+tput cup 10 30; read Cred
+echo "$id:$ln:$fname:$Prog:$Cred" >> student_data
+tput cup 25 11; echo "record_added"
+
+tput cup 12 50; read more
+if [ $more = "y" ]
+then
+read continue
+else
+break 
+fi
+fi
+done
