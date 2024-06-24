@@ -1,0 +1,13 @@
+Creditsfile=~/final_project/student_data
+clear
+tput cup 3 11; echo "Enter pattern to search for: "
+tput cup 3 50
+read s
+echo
+grep $s student_data | tr ':' ' '
+echo
+echo
+echo
+echo
+echo "Press ENTER to continue..."
+read continue
