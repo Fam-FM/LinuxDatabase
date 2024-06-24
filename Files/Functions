@@ -1,0 +1,12 @@
+sort_ID(){
+sort -t':' -k 1 -n student_data 
+}
+sort_lname(){ 
+sort -t':' -k 2 -d student_data 
+}
+sort_program(){
+sort -t':' -k 4 -d student_data
+}
+sort_credits(){ 
+sort -t':' -k 5 -n student_data 
+}
