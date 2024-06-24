@@ -1,0 +1,24 @@
+recordfile=~/final_project/records
+loop=s
+while [ "$loop" = s ]
+do
+clear
+tput cup 3 11; echo "Student Information Reporting Menu"
+tput cup 4 11; echo "==============================="
+tput cup 6 11; echo "1 - View Records"
+tput cup 7 11; echo "2 - Add New Records"
+tput cup 8 11; echo "3 - Search for Records"
+tput cup 9 11; echo "4 - Delete Records"
+tput cup 10 11; echo "5 - Quit"
+tput cup 12 11; echo "Enter your choice: "
+tput cup 12 30;
+read choice || continue
+case $choice in
+[1]) ./records ;;
+[2]) ./add_records ;;
+[3]) ./search_records ;;
+[4]) ./delete_records ;;
+[5]) exit ;;
+*) tput cup 16 11; echo "Invalid Input"; read choice ;;
+esac
+done
