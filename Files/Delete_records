@@ -1,0 +1,33 @@
+Creditsfile=~/final_project/student_data
+clear
+tput cup 2 11; echo "Enter pattern to delete: "
+tput cup 2 37
+read s
+echo
+tput cup 4 11; echo "Want to delete these records? (y)es or (n)o: "
+echo
+grep $s student_data
+if grep -q $s student_data
+then
+loop=t
+while [ $loop = t ]
+do
+tput cup 4 56
+read choice
+if [ $choice = "n" ]
+then
+break
+elif [ $choice = "y" ]
+then
+sed -i /$s/d student_data
+break
+fi
+done
+else
+echo "No record found"
+fi
+echo
+echo
+echo
+echo "Press ENTER to continue..."
+read continue
